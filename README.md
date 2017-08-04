@@ -1,7 +1,7 @@
 <p align='center'>
-    <img src='resources/expanded_logo.png' title='monoLambda'/>
+    <img src='./resources/expanded_logo.png' title='monoLambda'/>
 </p>
-<h1 align='center'>Open Source and Event Driven Back-End for monolambda.com</h1>
+<h2 align='center'>Open Source and Event Driven Back-End for monolambda.com</h2>
 
 ## TODO:
     - Setup AWS Lambda Functions
