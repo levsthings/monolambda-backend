@@ -1,7 +1,7 @@
 'use strict'
-const {post} = require('./utils/post')
+const {post} = require('./post')
 
-module.exports.echo = (event, context, callback) => {
+exports.handleMessage = (event, context, callback) => {
     const data = {
         body: JSON.parse(event.body),
         info: event.requestContext.identity.sourceIp

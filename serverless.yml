@@ -34,11 +34,19 @@ provider:
 #  exclude:
 #    - exclude-me.js
 #    - exclude-me-dir/**
+package:
+  individually: true
+  exclude:
+    - .git/**
+    - resources/**
+    - README.md
+    - LICENSE
 
 functions:
-  echo:
-    handler: handler.echo
-    memorySize: 256
+  contactForm:
+    description: Handles submitted contact forms on monolambda.com
+    handler: src/functions/contactForm/contactForm.handleMessage
+    memorySize: 128
     timeout: 3
     events:
       - http:

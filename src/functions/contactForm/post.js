@@ -1,5 +1,5 @@
 'use strict'
-const { config } = require('../config/index')
+const {config} = require('../../config/')
 const rp = require('request-promise')
 
 exports.post = (data) => {
@@ -7,7 +7,7 @@ exports.post = (data) => {
         method: 'POST',
         uri: config.hookURL,
         body: {
-            channel: '#monitor-monolambda',
+            channel: '#_test-lab_',
             username: 'Cactus',
             text: `${data.info} has sent us a message\n Name: ${data.body.name}\n Email: ${data.body.email}\n Subject: ${data.body.subject}\n Message: ${data.body.message}`,
             icon_emoji: ':cactus:'

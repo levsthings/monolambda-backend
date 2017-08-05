@@ -3,7 +3,7 @@
 
 # env
 .env
-config
+src/config
 
 # package directories
 node_modules
