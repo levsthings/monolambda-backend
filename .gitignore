@@ -1,9 +1,13 @@
-## editor settings
+# editor settings
 .vscode
 
-## env
+# env
 .env
-scripts/config/config.json
+config
 
-## dependencies
+# package directories
 node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
