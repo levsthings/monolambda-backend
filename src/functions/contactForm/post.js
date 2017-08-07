@@ -14,6 +14,6 @@ exports.post = (data) => {
     }
     return request
         .post(relay.uri)
-            .set('Content-Type', 'application-json')
-            .send(JSON.stringify(relay.body))
+        .set('Content-Type', 'application-json')
+        .send(JSON.stringify(relay.body))
 }
