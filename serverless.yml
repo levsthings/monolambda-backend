@@ -33,6 +33,7 @@ package:
     - resources/**
     - README.md
     - LICENSE
+    - .eslintrc
 
 functions:
   contactForm:
