@@ -1,5 +1,5 @@
 'use strict'
-const {postRequest} = require('./post-two')
+const {postRequest} = require('./post')
 const {response} = require('./response')
 
 exports.handleMessage = (event, context, callback) => {
