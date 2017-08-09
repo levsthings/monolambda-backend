@@ -28,7 +28,5 @@
     "lodash": "^4.17.4",
     "rimraf": "^2.6.1"
   },
-  "dependencies": {
-    "superagent": "^3.5.2"
-  }
+  "dependencies": {}
 }

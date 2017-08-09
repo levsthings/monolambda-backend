@@ -1,5 +1,5 @@
 'use strict'
-const {post} = require('./post')
+const {postRequest} = require('./post-two')
 const {response} = require('./response')
 
 exports.handleMessage = (event, context, callback) => {
@@ -7,11 +7,13 @@ exports.handleMessage = (event, context, callback) => {
         body: JSON.parse(event.body),
         info: event.requestContext.identity.sourceIp
     }
-    post(data)
+    postRequest(data)
         .then((res) => {
-            (res.statusCode === 200)
+            (res === 'ok')
                 ? callback(null, response(200, 'OK'))
                 : callback(null, response(400, 'FAIL'))
         })
-        .catch((res) => callback(null, response(400, 'FAIL')))
+        .catch((res) => {
+            callback(null, response(400, 'FAIL'))
+        })
 }
