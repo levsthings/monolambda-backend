@@ -10,13 +10,16 @@ exports.handleMessage = (event, context, callback) => {
         }
         postRequest(data)
             .then((res) => {
-                (res === 'ok')
+                (res === 200)
                     ? callback(null, response(200, 'OK'))
                     : callback(null, response(400, 'FAIL'))
             })
-            .catch(res => callback(null, response(400, 'FAIL')))
+            .catch((error) => {
+                console.error(error)
+                callback(null, response(400, 'FAIL'))
+            })
     } catch (error) {
-        console.error(error)
+        console.error('INVALID DATA', error)
         callback(null, response(400, 'INVALID DATA'))
     }
 }

@@ -3,7 +3,7 @@ const https = require('https')
 const {config} = require('../../config/')
 
 exports.postRequest = (data) => {
-    const relay = JSON.stringify({
+    const relayBody = JSON.stringify({
         channel: '#_test-lab_',
         username: 'Cactus',
         text: `${data.info} has sent us a message\n Name: ${data.body.name}\n Email: ${data.body.email}\n Subject: ${data.body.subject}\n Message: ${data.body.message}`,
@@ -12,7 +12,7 @@ exports.postRequest = (data) => {
 
     const headers = {
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(relay, 'utf8')
+        'Content-Length': Buffer.byteLength(relayBody, 'utf8')
     }
 
     const options = {
@@ -25,24 +25,12 @@ exports.postRequest = (data) => {
 
     return new Promise((resolve, reject) => {
         const post = https.request(options, (res) => {
-            if (res.statusCode !== 200) reject(new Error('Response not OK.'))
-            let body = []
-
-            res.on('data', (data) => {
-                body.push(data)
-            })
-
-            res.on('end', () => {
-                try {
-                    let parsedResponse = Buffer.concat(body).toString()
-                    resolve(parsedResponse)
-                } catch (err) {
-                    reject(err)
-                }
-            })
+            (res.statusCode !== 200)
+                ? reject(new Error('Connection to Webhook failed!'))
+                : resolve(res.statusCode)
         })
 
-        post.write(relay)
+        post.write(relayBody)
         post.on('error', (err) => reject(err))
         post.end()
     })
