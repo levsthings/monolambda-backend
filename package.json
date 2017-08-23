@@ -26,6 +26,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^4.0.3",
     "lodash": "^4.17.4",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "serverless-plugin-warmup": "^3.0.5-rc.1"
   }
 }
