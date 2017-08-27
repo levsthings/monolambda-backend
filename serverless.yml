@@ -5,17 +5,6 @@ provider:
   runtime: nodejs6.10
   stage: production
   region: us-east-2
-  iamRoleStatements:
-  - Effect: Allow
-    Action:
-      - 'lambda:InvokeFunction'
-    Resource:
-      - 'Fn::Join':
-          - ':'
-          - - 'arn:aws:lambda'
-            - Ref: 'AWS::Region'
-            - Ref: 'AWS::AccountId'
-            - 'function:${self:service}-${opt:stage, self:provider.stage}-*'
 
 package:
   individually: true
@@ -28,7 +17,6 @@ package:
   
 functions:
   contactForm:
-    warmup: true
     description: Handles submitted contact forms on monolambda.com
     handler: src/functions/contactForm/contactForm.handleMessage
     memorySize: 256
@@ -38,10 +26,3 @@ functions:
           path: contact-form
           method: POST
           cors: true
-
-plugins:
-  - serverless-plugin-warmup
-custom:
-  warmup:
-    schedule: 'cron(*/5 * * * ? *)'
-    prewarm: true
