@@ -1,5 +1,5 @@
 'use strict'
-exports.response = (statusCode, message) => {
+exports.clientResponse = (statusCode, message) => {
     return {
         statusCode: statusCode,
         headers: {
