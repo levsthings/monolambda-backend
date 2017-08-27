@@ -8,7 +8,7 @@ exports.handleMessage = (event, context, callback) => {
         context.succeed()
     } else {
         try {
-            let data = {
+            const data = {
                 body: JSON.parse(event.body),
                 info: event.requestContext.identity.sourceIp
             }

@@ -2,7 +2,7 @@
 const https = require('https')
 const {config} = require('../../config/')
 
-exports.relayMessage = data => {
+exports.relayMessage = (data) => {
     const relayBody = JSON.stringify({
         channel: config.hookChannel,
         username: config.hookUsername,

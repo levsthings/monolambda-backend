@@ -1,5 +1,5 @@
 {
-    "extends": "eslint-config-monolambda",
+    "extends": "@monolambda/eslint-config",
     "rules": {
         "no-console": "warn"
     }
