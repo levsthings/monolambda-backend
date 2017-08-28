@@ -26,3 +26,13 @@ functions:
           path: contact-form
           method: POST
           cors: true
+  healthCheck:
+    description: Handles health check for all other functions
+    handler: src/functions/healthCheck/healthCheck.handleHealthCheck
+    memorySize: 128
+    timeout: 3
+    events:
+      - http:
+          path: health-check
+          method: GET
+          cors: true

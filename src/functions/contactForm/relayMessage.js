@@ -1,6 +1,6 @@
 'use strict'
-const https = require('https')
 const {config} = require('../../config/')
+const {postRequest} = require('../../utils/postRequest')
 
 exports.relayMessage = (data) => {
     const relayBody = JSON.stringify({
@@ -29,15 +29,5 @@ exports.relayMessage = (data) => {
         headers: headers
     }
 
-    return new Promise((resolve, reject) => {
-        const post = https.request(options, res =>
-            (res.statusCode !== 200)
-                ? reject(new Error('Connection to Webhook failed!'))
-                : resolve(res.statusCode)
-        )
-
-        post.write(relayBody)
-        post.on('error', err => reject(new Error(err)))
-        post.end()
-    })
+    return postRequest(options, relayBody)
 }
